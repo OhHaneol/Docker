@@ -1,6 +1,12 @@
 # Docker
 <img src="https://user-images.githubusercontent.com/62991586/119464616-dfe7bc80-bd7d-11eb-9b94-0e139f96bae4.png" width=500 height=500>
 
+# 목차
+1. [Docker&Kubernetes](# Docker&Kubernetes)
+2. [Docker 설치부터 실행까지](# Docker 설치부터 실행까지)
+
+# Docker&Kubernetes
+
 ## 🐳 Docker? 🐳
 - 도커는 **컨테이너 기반의 오픈소스 가상화 플랫폼** 이다.  
 - 계속해서 바뀌는 서버 관리/개발 방식을 편리하게 함  
@@ -50,3 +56,6 @@
   - 클러스터 환경에서 컨테이너는 어느 서버에 생성될지 알 수 없고 다른 서버로 이동할 수도 있음
   - 따라서 컨테이너와 통신을 하기 위해서 어느 서버에서 실행중인지 알아야 하고 컨테이너가 생성되고 중지될 때 어딘가에 IP 와 Port 같은 정보를 업데이트 해줘야 함
   - key-value 스토리지에 정보를 저장할 수도 있고 내부 DNS 서버를 이용한다.
+
+
+# Docker 설치부터 실행까지
