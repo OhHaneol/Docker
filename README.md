@@ -59,3 +59,35 @@
 
 
 # Docker 설치부터 실행까지
+
+### 설치와 확인
+- MacOS 설치 링크: https://hub.docker.com/editions/community/docker-ce-desktop-mac/
+- 터미널에서 'docker version' 으로 버전 확인.
+- 확인 시에 'Client' 와 'Server' 두 가지의 버전이 모두 나온다.
+- 내가 **Client** 이고, localhost 에 Docker 가 떠 있는 것!
+- 즉 **나 = Client 가 명령어를 입력하면 host 에 설치된 Docker daemon 이 명령어를 처리하고 그 결과를 화면에 출력**하는 것
+
+### 도커 기본 명령어
+1. run: 컨테이너 실행
+  ```terminal
+  docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+  ```
+    |옵션|설명|
+    |---|---|
+    |-d|detached mode(백그라운드 모드)|
+    |-p|호스트와 컨테이너의 포트를 연결|
+    |-v|호스트와 컨테이너의 디렉토리를 연결|
+    |-e|컨테이너 내에서 사용할 환경변수 설정|
+    |--name|컨테이너 이름 설정|
+    |--rm|프로세스 종료 시 컨테이너 자동 제거|
+    |-it|-i 와 -t 를 동시에 사용한 것으로 터미널 입력을 위한 옵션|
+    |--network|네트워크 연결|
+    
+    ```terminal
+    docker run ubuntu:20.04
+    ```
+3. ㅇㅇ
+4. ㅇ
+5. ㅇ
+6. ㅇ
+7. ㅇ
