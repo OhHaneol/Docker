@@ -68,10 +68,10 @@
 - 즉 **나 = Client 가 명령어를 입력하면 host 에 설치된 Docker daemon 이 명령어를 처리하고 그 결과를 화면에 출력**하는 것
 
 ### 도커 기본 명령어
-1. run: 컨테이너 실행
-```
-docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
-```
+- run: 컨테이너 실행
+    ```
+    docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+    ```
   
    |옵션|설명|
    |---|---|
@@ -83,12 +83,11 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
    |--rm|프로세스 종료 시 컨테이너 자동 제거|
    |-it|-i 와 -t 를 동시에 사용한 것으로 터미널 입력을 위한 옵션|
    |--network|네트워크 연결|
-    
-```
-docker run ubuntu:20.04
-```
-3. ㅇㅇ
-4. ㅇ
-5. ㅇ
-6. ㅇ
-7. ㅇ
+   
+    - 예시
+    ```
+    docker run ubuntu:20.04
+    ```
+- ㅇㅇ
+- ㅇ
+- ㅇ
