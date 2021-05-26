@@ -68,26 +68,70 @@
 - 즉 **나 = Client 가 명령어를 입력하면 host 에 설치된 Docker daemon 이 명령어를 처리하고 그 결과를 화면에 출력**하는 것
 
 ### 도커 기본 명령어
-- run: 컨테이너 실행
-    ```
-    docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
-    ```
+
+<details>
+  <summary>run: 컨테이너 실행</summary>
   
-   |옵션|설명|
-   |---|---|
-   |-d|detached mode(백그라운드 모드)|
-   |-p|호스트와 컨테이너의 포트를 연결|
-   |-v|호스트와 컨테이너의 디렉토리를 연결|
-   |-e|컨테이너 내에서 사용할 환경변수 설정|
-   |--name|컨테이너 이름 설정|
-   |--rm|프로세스 종료 시 컨테이너 자동 제거|
-   |-it|-i 와 -t 를 동시에 사용한 것으로 터미널 입력을 위한 옵션|
-   |--network|네트워크 연결|
+  ```
+  docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+  ```
+  |옵션|설명|
+  |---|---|
+  |-d|detached mode(백그라운드 모드)|
+  |-p|호스트와 컨테이너의 포트를 연결|
+  |-v|호스트와 컨테이너의 디렉토리를 연결|
+  |-e|컨테이너 내에서 사용할 환경변수 설정|
+  |--name|컨테이너 이름 설정|
+  |--rm|프로세스 종료 시 컨테이너 자동 제거|
+  |-it|-i 와 -t 를 동시에 사용한 것으로 터미널 입력을 위한 옵션|
+  |--network|네트워크 연결|
    
-    - 예시
+  - ubuntu 20.04 컨테이너 만들기
     ```
     docker run ubuntu:20.04
     ```
-- ㅇㅇ
-- ㅇ
-- ㅇ
+    - 터미널에 위 명령 입력 시 사용할 이미지(ubuntu)가 저장되어 있는지 학인하고 없다면 다운로드(pull) 한 후 컨테이너를 생성(create)하고 시작(start)한다.
+    - 컨테이너는 정상적으로 실행됐지만 무엇을 할 지에 대해 명령어를 전달하지 않았기 때문에 컨테이너는 생성되자마자 종료. 컨테이너는 프로세스이기 때문에 실행중인 프로세스가 없으면 컨테이너는 종료됨.
+  - /bin/sh 실행하기
+    ```
+    docker run --rm -it ubuntu:20.04 /bin/sh
+    ```
+    - 컨테이너 내부에 들어가기 위해서 sh로 쉘을 실행하고 쉘에서 키보드 입력을 위해(명령하기 위해) -it 옵션을 준다.
+    - 추가적으로 프로세스가 종료되면 컨테이너가 자동적으로 삭제되도록 --rm 옵션도 추가
+    - --rm 옵션이 없다면 컨테이너가 종료되더라도 삭제되지 않고 남아 있어 수동으로 삭제해야 한다.
+  - 웹 어플리케이션 실행하기
+    ```
+    docker run --rm -p 5678:5678 hashicorp/http-echo -text="hello world"
+    ```
+    - hashicorp/http-echo 라는 컨테이너 띄움
+    - detached mode(백그라운드 모드)로 실행하기 위해 -d 옵션을 추가하고 -p 옵션을 추가하여 컨테이너 포트를 호스트의 포트로 연결
+    - 브라우저를 열고 localhost:5678 에 접속하면 메시지를 볼 수 있다.
+    - 5678:5678 -> 5679:5678 로 변경 시 5679로 연결됨
+  - Redis 실행하기
+    ```
+    docker run --rm -p 1234:6379 redis
+    ```
+    - Redis 라는 메모리기반 데이터베이스 실행
+  - MySQL 실행하기
+    ```
+    docker run -d -p 3306:3306  \
+      -e MYSQL_ALLOW_EMPTY_PASSWORD=true  \
+      --name mysql  \
+      mysql:5.7
+    ```
+    - MySQL 데이터베이스 실행
+    ```
+    docker exec -it mysql mysql
+    create database wp CHARACTER SET utf8;
+    grant all privileges on wp.* to wp@'%' identified by 'wp';
+    flush privileges;
+    quit
+    ```
+</details>
+<details>
+  <summary>exec</summary>
+  
+  - exec 명령어는 run 명령어와 달리 실행중인 도커 컨테이너에 접속할 때 사용하며 컨테이너 안에 ssh server 등을 설치하지 않고 exec 명령어로 접속
+  
+  
+</details>
