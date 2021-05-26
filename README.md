@@ -69,9 +69,9 @@
 
 ### 도커 기본 명령어
 1. run: 컨테이너 실행
-  ```
-  docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
-  ```
+```
+docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+```
   
    |옵션|설명|
    |---|---|
@@ -84,9 +84,9 @@
    |-it|-i 와 -t 를 동시에 사용한 것으로 터미널 입력을 위한 옵션|
    |--network|네트워크 연결|
     
-    ```
-    docker run ubuntu:20.04
-    ```
+```
+docker run ubuntu:20.04
+```
 3. ㅇㅇ
 4. ㅇ
 5. ㅇ
