@@ -130,12 +130,14 @@
     quit
     ```
 </details>
+
 - <details>
   <summary>exec</summary>
   
   - exec 명령어는 run 명령어와 달리 실행중인 도커 컨테이너에 접속할 때 사용하며 컨테이너 안에 ssh server 등을 설치하지 않고 exec 명령어로 접속
 
 </details>
+
 - <details>
   <summary>ps</summary>
   
