@@ -69,7 +69,7 @@
 
 ### 도커 기본 명령어
 
-<details>
+- <details>
   <summary>run</summary>
   
   - 컨테이너를 실행
