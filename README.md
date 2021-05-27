@@ -275,3 +275,47 @@
   ```
   
 </details>
+
+### 도커 컴포즈
+
+- 명령어들을 입력할 때 잘못 입력하는 등의 불편한 점을 편리하게 해줌
+- 설치 확인
+```
+docker-compose version
+```
+- docker-compose.yml 파일 만들기
+  1. 먼저 wp 디렉토리 생성 후 vsCode 로 들어가서 docker-compose.yml 파일 생성
+  ```
+  version: '2'
+  services:
+    db:
+        image: mysql:5.7
+        volumes:
+            - ./mysql:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: wordpress
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+    wordpress:
+        image: wordpress:latest
+        volumes:
+            - ./wp:/var/www/html
+        ports:
+            - "8000:80"
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_PASSWORD: wordpress
+  ```
+  2. 실행&종료
+  - 아래 명령어로 실행 후 인터넷 창에 'localhost:8000'를 쳐서 아까 설정한 8000 port로 들어가면 화면 나타남.
+  ```
+  docker-compose up
+  ```
+  - 종료하기
+  ```
+  docker-compose down
+  ```
+  
