@@ -70,7 +70,9 @@
 ### 도커 기본 명령어
 
 <details>
-  <summary>run: 컨테이너 실행</summary>
+  <summary>run</summary>
+  
+  - 컨테이너를 실행
   
   ```
   docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
@@ -132,6 +134,133 @@
   <summary>exec</summary>
   
   - exec 명령어는 run 명령어와 달리 실행중인 도커 컨테이너에 접속할 때 사용하며 컨테이너 안에 ssh server 등을 설치하지 않고 exec 명령어로 접속
+
+</details>
+<details>
+  <summary>ps</summary>
   
+  - 실행중인 컨테이너 목록을 확인하는 명령어
+  ```
+  docker ps
+  ```
+  - 중지된 컨테이너도 확인하려면 -a 옵션 붙이기
+  ```
+  docker ps -a
+  ```
+  
+</details>
+<details>
+  <summary>stop</summary>
+  
+  - 실행중인 ***컨테이너를 중지*** 하는 명령어
+  실행중인 컨테이너를 하나 또는 여러 개 중지 가능
+  ```
+  docker stop [OPTIONS] CONTAINER [CONTAINER...]
+  ```
+  
+</details>
+<details>
+  <summary>rm</summary>
+  
+  - 종료된 ***컨테이너를 완전히 제거***하는 명령어
+  ```
+  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+  ```
+  
+</details>
+<details>
+  <summary>logs</summary>
+  
+  - 컨테이너가 정상적으로 동작하는지 확인하는 좋은 방법!
+  - 기본 옵션과 -f, --tail 옵션 살펴보기
+  ```
+  docker logs [OPTIONS] CONTAINER(ID)
+  ```
+  - 로그를 출력하고 끝나는 기본과 달리 -f 옵션의 경우 페이지를 새로고침 할 때와 같이 변화가 있으면 대기하다가 로그를 새로 출력해줌.
+  ```
+  docker logs -f CONTAINER(ID)
+  ```
+  
+</details>
+<details>
+  <summary>images</summary>
+  
+  - 도커가 다운로드한 이미지 목록을 보는 명령어
+  ```
+  docker images [OPTIONS] [REPOSITORY[:TAG]]
+  ```
+  
+</details>
+<details>
+  <summary>pull</summary>
+  
+  - 이미지를 다운로드하는 명령어
+  ```
+  docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+  ```
+  
+</details>
+<details>
+  <summary>rmi</summary>
+  
+  - ***이미지를 삭제***하는 명령어
+  - images 명령어를 통해 얻는 이미지 목록에서 이미지 ID를 입력하면 삭제가 된다.
+  - 단, ***컨테이너가 실행중인 이미지는 삭제되지 않는다***
+  ```
+  docker rmi [OPTIONS] IMAGE [IMAGE...] 
+  ```
+  
+</details>
+<details>
+  <summary>network create</summary>
+  
+  - 도커 컨테이너끼리 이름으로 통신할 수 있는 가상 네트워크를 만든다.
+  ```
+  docker network create [OPTIONS] NETWORK
+  ```
+  - app-network 라는 이름으로 wordpress 와 mysql 이 통신할 네트워크를 만든다.
+  ```
+  docker network create app-network
+  ```
+  
+</details>
+<details>
+  <summary>volume mount(-v)</summary>
+  
+  - mysql을 삭제후에 (wordpress 를?) 다시 실행하면 컨테이너에 저장된 데이터베이스도 사라져서 오류가 발생 가능하다.
+  ```
+  docker stop mysql
+  docker rm mysql
+  docker run -d -p 3306:3306  \
+      -e MYSQL_ALLOW_EMPTY_PASSWORD=true  \
+      --network=app-network  \
+      --name mysql  \
+      mysql:5.7
+  ```
+  - 현재 디렉토리(pwd 명령어)와 mysql 디렉토리를 연결!
+  ```
+  docker stop mysql
+  docker rm mysql
+  docker run -d -p 3306:3306  \
+      -e MYSQL_ALLOW_EMPTY_PASSWORD=true  \
+      --network=app-network  \
+      --name mysql  \
+      -v [현재 디렉토리]/mysql:/var/lib/mysql  \
+      mysql:5.7
+  ```
+  - ***컨테이너를 없애면 그 안에 있는 데이터가 날아가***기 때문에 ***중요한 데이터의 경우 -v 옵션으로 연결***해야 함!!
+  
+</details>
+<details>
+  <summary>주요 정리!</summary>
+  
+  - 컨테이너 삭제 후 이미지까지 삭제!
+  - mysql 삭제 시
+  ```
+  docker stop mysql
+  docker rm mysql
+  docker images  //image id 확인
+  docker rmi [IMAGE ID]
+  ```
   
 </details>
