@@ -130,13 +130,13 @@
     quit
     ```
 </details>
-<details>
+- <details>
   <summary>exec</summary>
   
   - exec 명령어는 run 명령어와 달리 실행중인 도커 컨테이너에 접속할 때 사용하며 컨테이너 안에 ssh server 등을 설치하지 않고 exec 명령어로 접속
 
 </details>
-<details>
+- <details>
   <summary>ps</summary>
   
   - 실행중인 컨테이너 목록을 확인하는 명령어
@@ -149,7 +149,7 @@
   ```
   
 </details>
-<details>
+- <details>
   <summary>stop</summary>
   
   - 실행중인 ***컨테이너를 중지*** 하는 명령어
@@ -159,7 +159,7 @@
   ```
   
 </details>
-<details>
+- <details>
   <summary>rm</summary>
   
   - 종료된 ***컨테이너를 완전히 제거***하는 명령어
@@ -168,7 +168,7 @@
   ```
   
 </details>
-<details>
+- <details>
   <summary>logs</summary>
   
   - 컨테이너가 정상적으로 동작하는지 확인하는 좋은 방법!
@@ -182,7 +182,7 @@
   ```
   
 </details>
-<details>
+- <details>
   <summary>images</summary>
   
   - 도커가 다운로드한 이미지 목록을 보는 명령어
@@ -191,7 +191,7 @@
   ```
   
 </details>
-<details>
+- <details>
   <summary>pull</summary>
   
   - 이미지를 다운로드하는 명령어
@@ -200,7 +200,7 @@
   ```
   
 </details>
-<details>
+- <details>
   <summary>rmi</summary>
   
   - ***이미지를 삭제***하는 명령어
@@ -211,7 +211,7 @@
   ```
   
 </details>
-<details>
+- <details>
   <summary>network create</summary>
   
   - 도커 컨테이너끼리 이름으로 통신할 수 있는 가상 네트워크를 만든다.
@@ -224,7 +224,7 @@
   ```
   
 </details>
-<details>
+- <details>
   <summary>volume mount(-v)</summary>
   
   - mysql을 삭제후에 (wordpress 를?) 다시 실행하면 컨테이너에 저장된 데이터베이스도 사라져서 오류가 발생 가능하다.
@@ -251,7 +251,7 @@
   - ***컨테이너를 없애면 그 안에 있는 데이터가 날아가***기 때문에 ***중요한 데이터의 경우 -v 옵션으로 연결***해야 함!!
   
 </details>
-<details>
+- <details>
   <summary>주요 정리!</summary>
   
   - 컨테이너 삭제 후 이미지까지 삭제!
